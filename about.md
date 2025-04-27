@@ -5,4 +5,4 @@ description: An optional about page for Scriptor Jekyll theme
 
 ---
 
-This is about page
+This is about page where i will share about me.
