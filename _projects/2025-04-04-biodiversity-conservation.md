@@ -2,11 +2,8 @@
 layout: project
 title: "Community-Based Biodiversity Conservation in Nepal"
 date: 2024-02-20
+description: "This project focuses on developing and implementing community-based conservation strategies in Nepal's protected areas."
 category: "Conservation"
-feature_image: /images/projects/conservation.jpg
-excerpt: "An innovative approach to biodiversity conservation through community engagement and sustainable practices in Nepal's protected areas."
-link: "https://rasila2.github.io/biodiversity-conservation"
-github: "https://github.com/rasila2/biodiversity-conservation"
 ---
 
 ## Project Overview

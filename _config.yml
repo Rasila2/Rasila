@@ -36,8 +36,8 @@ navigation:
     url: /research/
   - text: Projects
     url: /projects/
-  - text: Blog
-    url: /blog/
+  - text: Blogs
+    url: /blogs/
 
 # Colors
 accent_color: '#2d72d9'
