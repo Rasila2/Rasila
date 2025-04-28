@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<main class="main-content">
+  <article class="project-page">
+    <header class="project-header">
+      <h1 class="project-title">{{ page.title }}</h1>
+      {% if page.category %}
+        <span class="project-category">{{ page.category }}</span>
+      {% endif %}
+      {% if page.date %}
+        <div class="project-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %Y" }}</time>
+        </div>
+      {% endif %}
+    </header>
+
+    {% if page.feature_image %}
+      <div class="project-feature-image">
+        <img src="{{ page.feature_image | relative_url }}" alt="{{ page.title }}">
+      </div>
+    {% endif %}
+
+    <div class="project-content">
+      {{ content }}
+    </div>
+
+    <div class="project-links">
+      {% if page.link %}
+        <a href="{{ page.link }}" class="button" target="_blank" rel="noopener">View Project</a>
+      {% endif %}
+      {% if page.github %}
+        <a href="{{ page.github }}" class="button" target="_blank" rel="noopener">GitHub Repository</a>
+      {% endif %}
+    </div>
+
+    <div class="project-navigation">
+      <a href="{{ '/projects/' | relative_url }}" class="button">Back to Projects</a>
+    </div>
+  </article>
+</main> 

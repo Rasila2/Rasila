@@ -12,9 +12,26 @@ layout: default
       {{ content }}
     </div>
 
+    <!-- Category Navigation -->
+    <nav class="project-categories">
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="#all" class="category-link active" data-category="all">All Projects</a>
+        </li>
+        {% assign categories = site.projects | map: "category" | uniq | sort %}
+        {% for category in categories %}
+          <li class="category-item">
+            <a href="#{{ category | slugify }}" class="category-link" data-category="{{ category | slugify }}">
+              {{ category }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
     <div class="projects-grid">
       {% for project in site.projects %}
-        <article class="project-item">
+        <article class="project-item" data-category="{{ project.category | slugify }}">
           {% if project.feature_image %}
             <div class="project-image">
               <img src="{{ project.feature_image | relative_url }}" alt="{{ project.title }}">
@@ -22,7 +39,12 @@ layout: default
           {% endif %}
           <div class="project-content">
             <header class="project-header">
-              <h2 class="project-title">{{ project.title }}</h2>
+              <h2 class="project-title">
+                <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+              </h2>
+              {% if project.category %}
+                <span class="project-category">{{ project.category }}</span>
+              {% endif %}
               {% if project.date %}
                 <div class="project-meta">
                   <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%B %Y" }}</time>
@@ -39,10 +61,39 @@ layout: default
               {% if project.github %}
                 <a href="{{ project.github }}" class="button" target="_blank" rel="noopener">GitHub</a>
               {% endif %}
+              <a href="{{ project.url | relative_url }}" class="button">Read More</a>
             </div>
           </div>
         </article>
       {% endfor %}
     </div>
   </div>
-</main> 
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const categoryLinks = document.querySelectorAll('.category-link');
+  const projectItems = document.querySelectorAll('.project-item');
+
+  categoryLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Update active state
+      categoryLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+      
+      const category = this.dataset.category;
+      
+      // Filter projects
+      projectItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script> 
