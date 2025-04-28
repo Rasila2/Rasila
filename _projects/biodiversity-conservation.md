@@ -5,8 +5,8 @@ date: 2024-02-20
 category: "Conservation"
 feature_image: /images/projects/conservation.jpg
 excerpt: "An innovative approach to biodiversity conservation through community engagement and sustainable practices in Nepal's protected areas."
-link: "https://example.com/biodiversity-conservation"
-github: "https://github.com/username/biodiversity-conservation"
+link: "https://rasila2.github.io/biodiversity-conservation"
+github: "https://github.com/rasila2/biodiversity-conservation"
 ---
 
 ## Project Overview
