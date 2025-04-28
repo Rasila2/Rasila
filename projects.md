@@ -8,10 +8,10 @@ permalink: /projects/
 Explore my projects related to environmental science and research.
 
 <div class="project-content">
-  <h2>Blog Posts</h2>
+  <h2>My Projects</h2>
   
   <div class="project-list">
-    {% for post in site.posts %}
+    {% for projects in site.projects %}
       <article class="project-item">
         <h3 class="project-title">
           <a href="{{ project.url | relative_url }}">{{ project.title }}</a>

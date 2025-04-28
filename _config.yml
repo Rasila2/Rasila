@@ -36,8 +36,15 @@ navigation:
     url: /research/
   - text: Projects
     url: /projects/
-  - text: Blogs
-    url: /blogs/
+  - text: Blog
+    url: /blog/
+    submenu:
+      - text: Environmental Science
+        url: /blog/environmental-science/
+      - text: Research Updates
+        url: /blog/research/
+      - text: Field Notes
+        url: /blog/field-notes/
 
 # Colors
 accent_color: '#2d72d9'

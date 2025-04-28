@@ -1,0 +1,10 @@
+{% assign url = page.url %}
+<nav class="site-nav">
+    <div class="nav-menu">
+        {% for item in site.navigation %}
+        <a href="{{ item.url | relative_url }}" class="nav-link{% if url == item.url %} active{% endif %}">
+            {{ item.text }}
+        </a>
+        {% endfor %}
+    </div>
+</nav> 
