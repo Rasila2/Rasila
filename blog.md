@@ -1,8 +1,8 @@
 ---
-layout: blog
+layout: page
 title: Blog
-permalink: /blog/
-navID: blog
+permalink: /blogs/
+
 ---
 
 Welcome to my blog! Here you'll find my latest posts about environmental science, research, and more.

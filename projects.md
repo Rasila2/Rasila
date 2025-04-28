@@ -1,16 +1,28 @@
 ---
-layout: project
+layout: page
 title: Projects
 permalink: /projects/
-navID: projects
+
 ---
 
 Explore my projects related to environmental science and research.
 
-<div class="projects-content">
-  <h2>My Projects</h2>
+<div class="blog-content">
+  <h2>Blog Posts</h2>
   
-  <div class="projects-grid">
-    <!-- Project items will be listed here -->
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-item">
+        <h3 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        </div>
+        <div class="post-excerpt">
+          {{ post.excerpt | strip_html | truncatewords: 50 }}
+        </div>
+      </article>
+    {% endfor %}
   </div>
 </div> 
