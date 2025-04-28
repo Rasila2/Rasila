@@ -1,8 +1,11 @@
 ---
-layout: page
+layout: blog
 title: Blog
 permalink: /blog/
+navID: blog
 ---
+
+Welcome to my blog! Here you'll find my latest posts about environmental science, research, and more.
 
 <div class="blog-content">
   <h2>Blog Posts</h2>

@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<main class="main-content">
+  <div class="research-page navID-research">
+    <header class="page-header">
+      <h1 class="page-title">{{ page.title }}</h1>
+    </header>
+
+    <div class="research-content">
+      {{ content }}
+    </div>
+
+    <div class="research-list">
+      {% for research in site.research %}
+        <article class="research-item">
+          <header class="research-header">
+            <h2 class="research-title">{{ research.title }}</h2>
+            {% if research.date %}
+              <div class="research-meta">
+                <time datetime="{{ research.date | date_to_xmlschema }}">{{ research.date | date: "%B %Y" }}</time>
+              </div>
+            {% endif %}
+          </header>
+          <div class="research-excerpt">
+            {{ research.excerpt | markdownify }}
+            {% if research.link %}
+              <a href="{{ research.link }}" class="read-more" target="_blank" rel="noopener">View Research</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</main> 

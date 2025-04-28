@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<main class="main-content">
+  <div class="projects-page navID-projects">
+    <header class="page-header">
+      <h1 class="page-title">{{ page.title }}</h1>
+    </header>
+
+    <div class="projects-content">
+      {{ content }}
+    </div>
+
+    <div class="projects-grid">
+      {% for project in site.projects %}
+        <article class="project-item">
+          {% if project.feature_image %}
+            <div class="project-image">
+              <img src="{{ project.feature_image | relative_url }}" alt="{{ project.title }}">
+            </div>
+          {% endif %}
+          <div class="project-content">
+            <header class="project-header">
+              <h2 class="project-title">{{ project.title }}</h2>
+              {% if project.date %}
+                <div class="project-meta">
+                  <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%B %Y" }}</time>
+                </div>
+              {% endif %}
+            </header>
+            <div class="project-excerpt">
+              {{ project.excerpt | markdownify }}
+            </div>
+            <div class="project-links">
+              {% if project.link %}
+                <a href="{{ project.link }}" class="button" target="_blank" rel="noopener">View Project</a>
+              {% endif %}
+              {% if project.github %}
+                <a href="{{ project.github }}" class="button" target="_blank" rel="noopener">GitHub</a>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</main> 
