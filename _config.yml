@@ -34,8 +34,26 @@ navigation:
     url: /about/
   - text: Research
     url: /research/
+    submenu:
+      - text: Publications
+        url: /research/publications/
+      - text: Field Studies
+        url: /research/field-studies/
+      - text: Data Analysis
+        url: /research/data-analysis/
+      - text: Research Methods
+        url: /research/methods/
   - text: Projects
     url: /projects/
+    submenu:
+      - text: Current Projects
+        url: /projects/current/
+      - text: Past Projects
+        url: /projects/past/
+      - text: Collaborations
+        url: /projects/collaborations/
+      - text: Research Tools
+        url: /projects/tools/
   - text: Blog
     url: /blog/
     submenu:
@@ -45,6 +63,8 @@ navigation:
         url: /blog/research/
       - text: Field Notes
         url: /blog/field-notes/
+      - text: Data Insights
+        url: /blog/data-insights/
 
 # Colors
 accent_color: '#2d72d9'
