@@ -1,10 +1,154 @@
 {% assign url = page.url %}
-<nav class="site-nav">
-    <div class="nav-menu">
-        {% for item in site.navigation %}
-        <a href="{{ item.url | relative_url }}" class="nav-link{% if url == item.url %} active{% endif %}">
+<nav class="site-nav" role="navigation">
+  <div class="nav-container">
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+      <span class="hamburger"></span>
+    </button>
+    
+    <ul class="nav-menu">
+      {% for item in site.navigation %}
+        <li class="nav-item {% if item.submenu %}has-submenu{% endif %}">
+          <a href="{{ item.url | relative_url }}" 
+             class="nav-link {% if page.url == item.url %}active{% endif %}"
+             {% if item.submenu %}aria-haspopup="true"{% endif %}>
             {{ item.text }}
-        </a>
-        {% endfor %}
-    </div>
-</nav> 
+          </a>
+          
+          {% if item.submenu %}
+            <ul class="submenu" aria-label="Submenu">
+              {% for subitem in item.submenu %}
+                <li>
+                  <a href="{{ subitem.url | relative_url }}" 
+                     class="submenu-link {% if page.url == subitem.url %}active{% endif %}">
+                    {{ subitem.text }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+<style>
+.site-nav {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: #f5f5f5;
+  color: {{ site.accent_color }};
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  display: none;
+}
+
+.nav-item:hover .submenu {
+  display: block;
+}
+
+.submenu-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.submenu-link:hover {
+  background-color: #f5f5f5;
+}
+
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+  
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 2rem;
+    flex-direction: column;
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  .submenu {
+    position: static;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileToggle = document.querySelector('.mobile-nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  mobileToggle.addEventListener('click', function() {
+    navMenu.classList.toggle('active');
+    this.setAttribute('aria-expanded', 
+      this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+    );
+  });
+});
+</script> 
