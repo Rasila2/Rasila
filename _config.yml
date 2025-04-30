@@ -66,6 +66,9 @@ navigation:
       - text: Data Insights
         url: /blog/data-insights/
 
+# The shortname for your Disqus site to enable comments.
+disqus: rasila2  # You'll need to set this up on Disqus
+
 # Colors
 accent_color: '#2d72d9'
 
